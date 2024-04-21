@@ -1,0 +1,36 @@
+version: 2
+
+sources:
+  - name: raw
+    tables:
+      - name: customers
+        columns:
+          - name: customer_id
+            description: "Unique identifier for the customer"
+            tests:
+              - unique
+          - name: name
+            description: "Name of the customer"
+          - name: email
+            description: "Email of the customer"
+          - name: address
+            description: "Address of the customer"
+
+      - name: payments
+        columns:
+          - name: payment_id
+            description: "Unique identifier for the payment"
+            tests:
+              - unique
+          - name: customer_id
+            description: "ID of the customer associated with the payment"
+            tests:
+              - not_null
+          - name: amount
+            description: "Amount of the payment"
+            tests:
+              - not_null
+          - name: payment_date
+            description: "Date of the payment"
+            tests:
+              - not_null
